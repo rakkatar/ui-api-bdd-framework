@@ -16,9 +16,8 @@ public class TestHooks {
             WebDriver newDriver = DriverFactory.create(System.getProperty("browser", "chrome"));
             DriverManager.setDriver(newDriver);
         }
-        // maximize and set implicit wait
+        // maximize and (implicit waits disabled) — prefer explicit waits via DriverManager.getWait()
         DriverManager.getDriver().manage().window().maximize();
-        DriverManager.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
     }
 
     @After
