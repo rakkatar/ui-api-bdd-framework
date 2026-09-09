@@ -1,11 +1,10 @@
 package pl.recruitment.qa.ui.steps;
 
 import io.cucumber.java.en.Given;
-import pl.recruitment.qa.ui.browser.DriverManager;
 import pl.recruitment.qa.core.ConfigProvider;
 import pl.recruitment.qa.ui.pages.DashboardPage;
 
-public class DashboardSteps {
+public class DashboardSteps extends StepsBase {
 
     @Given("Przejdź na stronę portalu")
     public void goToPortal() {
@@ -13,8 +12,8 @@ public class DashboardSteps {
         if (base == null || base.isEmpty()) {
             throw new IllegalStateException("ui.baseUrl is not configured (check core/src/main/resources/config.yml or env/ JVM properties)");
         }
-        DriverManager.getDriver().get(base);
+        driver().get(base);
 
-        new DashboardPage(DriverManager.getDriver()).waitForHomePage();
+        new DashboardPage(driver()).waitForHomePage();
     }
 }
