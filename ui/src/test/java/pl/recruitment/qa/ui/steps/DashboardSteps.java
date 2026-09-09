@@ -1,11 +1,9 @@
 package pl.recruitment.qa.ui.steps;
 
 import io.cucumber.java.en.Given;
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import pl.recruitment.qa.ui.browser.DriverManager;
 import pl.recruitment.qa.core.ConfigProvider;
+import pl.recruitment.qa.ui.pages.DashboardPage;
 
 public class DashboardSteps {
 
@@ -17,11 +15,6 @@ public class DashboardSteps {
         }
         DriverManager.getDriver().get(base);
 
-        WebDriverWait wait = DriverManager.getWait();
-        // 1) wait for header home link
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("a[aria-label='Strona główna T-Mobile']")));
-
-        // 2) verify title contains expected token
-        wait.until(ExpectedConditions.titleContains("T-Mobile"));
+        new DashboardPage(DriverManager.getDriver()).waitForHomePage();
     }
 }
