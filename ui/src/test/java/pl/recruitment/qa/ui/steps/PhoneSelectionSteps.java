@@ -43,9 +43,8 @@ public class PhoneSelectionSteps {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         // 1) wait for header home link
         wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("a[aria-label='Strona główna T-Mobile']")));
-        });
 
-        // 3) verify title contains expected token
+        // 2) verify title contains expected token
         wait.until(ExpectedConditions.titleContains("T-Mobile"));
     }
 
