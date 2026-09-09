@@ -40,7 +40,7 @@ public class PhoneSelectionSteps {
         }
         driver.get(base);
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        WebDriverWait wait = DriverManager.getWait();
         // 1) wait for header home link
         wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("a[aria-label='Strona główna T-Mobile']")));
 
@@ -50,7 +50,7 @@ public class PhoneSelectionSteps {
 
     @When("wybieram pierwszy telefon z listy ofert")
     public void wybieramPierwszyTelefonZListyOfert() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        WebDriverWait wait = DriverManager.getWait();
         // ensure phone category is selected (site loads items dynamically)
         try {
             WebElement phonesLink = driver.findElement(By.xpath("//a[normalize-space() = 'Phones']"));
@@ -69,7 +69,7 @@ public class PhoneSelectionSteps {
 
     @Then("widoczny jest widok szczegółów wybranego telefonu")
     public void widocznyJestWidokSzczegolowWybranegoTelefonu() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait wait = DriverManager.getWait(Duration.ofSeconds(10));
         wait.until(ExpectedConditions.urlContains("prod.html"));
         String currentUrl = driver.getCurrentUrl();
         assertTrue("Po kliknięciu w produkt nie otworzył się widok szczegółów", currentUrl.contains("prod.html"));
