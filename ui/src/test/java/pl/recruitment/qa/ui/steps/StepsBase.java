@@ -15,11 +15,11 @@ public abstract class StepsBase {
         return DriverManager.getDriver();
     }
 
-    protected WebDriverWait wait() {
+    protected WebDriverWait driverWait() {
         return DriverManager.getWait();
     }
 
-    protected WebDriverWait wait(Duration timeout) {
+    protected WebDriverWait driverWait(Duration timeout) {
         return DriverManager.getWait(timeout);
     }
 }

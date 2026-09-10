@@ -14,30 +14,40 @@ Projekt jest zbudowany w architekturze modułowej:
 - `ui` - testy UI z Selenium i Cucumber; odpowiedzialny za scenariusze użytkownika w przeglądarce
 - `api` - testy API dla endpointów REST (np. NBP); odpowiedzialny za wywołania HTTP i walidację odpowiedzi
 
-Najprostsza zasada jest taka:
-
-- `core` dostarcza wspólne narzędzia i ustawienia
-- `ui` obsługuje interakcje z przeglądarką
-- `api` obsługuje wywołania do serwisów zewnętrznych
-
-Dzięki temu testy są czytelne, łatwiej jest je utrzymywać i nie mieszamy logiki wspólnej z testami konkretnego typu.
-
 ## Uruchomienie wszystkich testów
 
 ```bash
 mvn clean test
 ```
 
+## Uruchomienie testów API (NBP)
+
+```bash
+mvn -q -pl api -am test
+```
+
+## Generowanie raportu Allure dla API
+
+Po uruchomieniu testów API wygeneruj raport:
+
+```bash
+mvn -q -pl api -DskipTests allure:report
+```
+
+Raport HTML zostanie zapisany w:
+
+- `api/target/site/allure-maven-plugin/allure-maven.html`
+
+Na Windows możesz otworzyć raport komendą:
+
+```bash
+start api\target\site\allure-maven-plugin\allure-maven.html
+```
+
 ## Uruchomienie tylko testów modułu UI
 
 ```bash
 mvn -q -pl ui -am clean test -Dbrowser=chrome
-```
-
-## Uruchomienie testów UI w przeglądarce Firefox
-
-```bash
-mvn -q -pl ui -am clean test -Dbrowser=firefox
 ```
 
 ## Uruchomienie w trybie headless
@@ -50,13 +60,15 @@ mvn -q -pl ui -am clean test -Dbrowser=chrome -Dheadless=true
 
 - `-pl ui` wybiera moduł `ui`
 - `-am` buduje również zależne moduły, np. `core`
-- `-Dbrowser=chrome` lub `-Dbrowser=firefox` wybiera przeglądarkę
+- `-Dbrowser=chrome` wskazuje przeglądarkę
 - `-Dheadless=true` uruchamia przeglądarkę bez widocznego okna
 
-## Przykładowy feature
+## Przykładowe feature
 
 W module UI znajduje się przykładowy feature:
 
-- `ui/src/test/resources/features/browser_selection.feature`
+- `ui/src/test/resources/features/wybor-telefonu-z-listy-ofert.feature`
 
-Test otwiera stronę i sprawdza tytuł strony.
+W module API znajduje się przykładowy feature:
+
+- `api/src/test/resources/features/kursy-walut.feature`

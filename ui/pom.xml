@@ -15,6 +15,7 @@
     <name>ui</name>
 
     <properties>
+        <allure.version>2.29.0</allure.version>
         <selenium.version>4.25.0</selenium.version>
         <cucumber.version>7.18.1</cucumber.version>
         <junit.version>4.13.2</junit.version>
@@ -52,6 +53,13 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-cucumber7-jvm</artifactId>
+            <version>${allure.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

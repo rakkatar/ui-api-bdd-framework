@@ -4,6 +4,7 @@ import io.cucumber.java.Before;
 import io.cucumber.java.After;
 import pl.recruitment.qa.ui.browser.DriverFactory;
 import pl.recruitment.qa.ui.browser.DriverManager;
+import pl.recruitment.qa.ui.context.ScenarioContext;
 
 import org.openqa.selenium.WebDriver;
 import java.time.Duration;
@@ -23,5 +24,6 @@ public class TestHooks {
     @After
     public void afterScenario() {
         DriverManager.quitDriver();
+        ScenarioContext.clear();
     }
 }
