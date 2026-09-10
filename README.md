@@ -50,12 +50,6 @@ start api\target\site\allure-maven-plugin\allure-maven.html
 mvn -q -pl ui -am clean test -Dbrowser=chrome
 ```
 
-## Uruchomienie w trybie headless
-
-```bash
-mvn -q -pl ui -am clean test -Dbrowser=chrome -Dheadless=true
-```
-
 ## Ważne informacje
 
 - `-pl ui` wybiera moduł `ui`
@@ -65,10 +59,10 @@ mvn -q -pl ui -am clean test -Dbrowser=chrome -Dheadless=true
 
 ## Przykładowe feature
 
-W module UI znajduje się przykładowy feature:
+W module UI znajduje się feature:
 
 - `ui/src/test/resources/features/wybor-telefonu-z-listy-ofert.feature`
 
-W module API znajduje się przykładowy feature:
+W module API znajduje się feature:
 
 - `api/src/test/resources/features/kursy-walut.feature`
